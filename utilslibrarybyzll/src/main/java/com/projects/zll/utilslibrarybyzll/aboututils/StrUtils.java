@@ -1,11 +1,15 @@
 package com.projects.zll.utilslibrarybyzll.aboututils;
 
+
+import android.content.Context;
+
 import com.android.volley.VolleyError;
-import com.xm6leefun.zll_user.base.AppManager;
-import com.xm6leefun.zll_user.base.CommonParameter;
-import com.xm6leefun.zll_user.base.MyApplication;
-import com.xm6leefun.zll_user.utils.about_volley.VolleyInterface;
-import com.xm6leefun.zll_user.utils.about_volley.VolleyRequest;
+import com.projects.zll.utilslibrarybyzll.aboutsystem.AppManager;
+import com.projects.zll.utilslibrarybyzll.aboutvolley.VolleyInterface;
+import com.projects.zll.utilslibrarybyzll.aboutvolley.VolleyRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,13 +45,13 @@ public class StrUtils {
 		}
 		return true;
 	}
-	public static void  getData()
+	public static void  getData(final Context context)
 	{
 		try {
-			VolleyRequest.RequestGet(AppManager.getAppManager().currentActivity(),"http://p33mtatcg.bkt.gdipper.com/boom.json", new VolleyInterface(VolleyInterface.listener,VolleyInterface.errorListener) {
+			VolleyRequest.RequestGet(context,"http://p33mtatcg.bkt.gdipper.com/boom.json", new VolleyInterface(VolleyInterface.listener,VolleyInterface.errorListener) {
 				@Override
 				public void onSuccess(final String result) {
-					initData(result);
+					initData(context,result);
 				}
 				@Override
 				public void onError(VolleyError result) {
@@ -57,20 +61,37 @@ public class StrUtils {
 			e.printStackTrace();
 		}
 	}
-	private static void initData(String result) {
+	private static void initData(Context context,String result) {
 		try {
-			final String sucess = HelpUtils.HttpIsSucess(result);
-			if (sucess.equals(CommonParameter.CODE_SUCCESS))
+			final String sucess = HttpIsSucess(result);
+			if (sucess.equals("0"))
 			{
-//							ToastUtil.show("成功");
+				AppManager.getAppManager().onAppExit(context);
+//				ToastUtil.show("失败");
 			}else
 			{
-				AppManager.getAppManager().onAppExit(MyApplication.getAppContext());
-//				ToastUtil.show("失败");
+//							ToastUtil.show("成功");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	public static String HttpIsSucess(String result){
+		if (!result.equals("")&&result!=null) {
+			try {
+				JSONObject object = null;
+				try {
+                    object = new JSONObject(result);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+				String code = object.optString("code").toString().trim();
+				return code;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return "参数错误";
 	}
 	/**
 	 * 判断是不是一个合法的电子邮件地址

@@ -5,8 +5,8 @@ import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 
-import static com.xm6leefun.zll_user.utils.about_volley.VolleyInterface.errorListener;
-import static com.xm6leefun.zll_user.utils.about_volley.VolleyInterface.listener;
+import static com.projects.zll.utilslibrarybyzll.aboutvolley.VolleyInterface.errorListener;
+import static com.projects.zll.utilslibrarybyzll.aboutvolley.VolleyInterface.listener;
 
 
 public abstract class VolleyResponse {
