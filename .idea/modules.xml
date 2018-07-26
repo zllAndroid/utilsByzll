@@ -4,10 +4,10 @@
     <modules>
       <module fileurl="file://E:\workspace\studio\utilsByzll\ZllUtils.iml" filepath="E:\workspace\studio\utilsByzll\ZllUtils.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://E:\workspace\studio\utilsByzll\app\app.iml" filepath="E:\workspace\studio\utilsByzll\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chatinput/chatinput.iml" filepath="$PROJECT_DIR$/chatinput/chatinput.iml" />
+      <module fileurl="file://$PROJECT_DIR$/imui/imui.iml" filepath="$PROJECT_DIR$/imui/imui.iml" />
       <module fileurl="file://$PROJECT_DIR$/utilsByzll.iml" filepath="$PROJECT_DIR$/utilsByzll.iml" />
       <module fileurl="file://$PROJECT_DIR$/utilslibrarybyzll/utilslibrarybyzll.iml" filepath="$PROJECT_DIR$/utilslibrarybyzll/utilslibrarybyzll.iml" />
-      <module fileurl="file://E:\workspace\studio\utilsByzll\utilslibrarybyzll\utilslibrarybyzll.iml" filepath="E:\workspace\studio\utilsByzll\utilslibrarybyzll\utilslibrarybyzll.iml" />
     </modules>
   </component>
 </project>
